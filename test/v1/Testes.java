@@ -36,4 +36,62 @@ public class Testes {
 		f.removePessoa(proximo);
 	}
 
+	@Test
+	public void testeGravida() {
+		Pessoa p1 = new Pessoa("Thiago", false, false);
+		Pessoa p2 = new Pessoa("Fulana", true, false);
+		Pessoa p3 = new Pessoa("Ciclana", false, false);
+		
+		Fila f = new Fila();
+		
+		f.addPessoa(p1);
+		f.addPessoa(p2);
+		f.addPessoa(p3);
+		
+		Pessoa proximo = f.proximoFila();
+		
+		Assert.assertEquals(proximo.getNome(), "Fulana");
+		
+		f.removePessoa(proximo);
+		proximo = f.proximoFila();
+			
+		Assert.assertEquals(proximo.getNome(), "Thiago");
+		
+		f.removePessoa(proximo);
+		proximo = f.proximoFila();
+		
+		Assert.assertEquals(proximo.getNome(), "Ciclana");
+		
+		f.removePessoa(proximo);
+	}
+
+	@Test
+	public void testeIdoso() {
+		Pessoa p1 = new Pessoa("Thiago", false, false);
+		Pessoa p2 = new Pessoa("Fulana", true, false);
+		Pessoa p3 = new Pessoa("Beltrano", false, true);
+		
+		Fila f = new Fila();
+		
+		f.addPessoa(p1);
+		f.addPessoa(p2);
+		f.addPessoa(p3);
+		
+		Pessoa proximo = f.proximoFila();
+		
+		Assert.assertEquals(proximo.getNome(), "Beltrano");
+		
+		f.removePessoa(proximo);
+		proximo = f.proximoFila();
+			
+		Assert.assertEquals(proximo.getNome(), "Fulana");
+		
+		f.removePessoa(proximo);
+		proximo = f.proximoFila();
+		
+		Assert.assertEquals(proximo.getNome(), "Thiago");
+		
+		f.removePessoa(proximo);
+	}
+	
 }
